@@ -1,1 +1,5 @@
-
+spring:
+  application:
+    name: library-service
+  config:
+    import: "optional:configserver:http://localhost:8088"
