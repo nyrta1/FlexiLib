@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class LibraryServiceApplication {
+public class JsonLibraryServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LibraryServiceApplication.class, args);
+		SpringApplication.run(JsonLibraryServiceApplication.class, args);
 	}
 
 }
