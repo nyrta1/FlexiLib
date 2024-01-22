@@ -2,6 +2,7 @@ package com.nyrta1.libraryservice.service.authorservice;
 
 import com.nyrta1.libraryservice.model.Author;
 import com.nyrta1.libraryservice.repository.AuthorRepository;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,23 @@ class AuthorServiceImpl implements AuthorService {
     public UUID save(Author author) {
         Author savedAuthor = authorsRepository.saveAndFlush(author);
         return savedAuthor.getAuthorUUID();
+    }
+
+    @Override
+    public Author update(UUID uuid, Author updateAuthor) {
+        Author existingAuthor = authorsRepository.findByAuthorUUID(uuid).orElse(null);
+
+        if (existingAuthor != null) {
+            updateAuthor.setAuthorUUID(existingAuthor.getAuthorUUID());
+            return authorsRepository.saveAndFlush(updateAuthor);
+        }
+
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public int deleteByUUID(UUID uuid) {
+        return authorsRepository.deleteByAuthorUUID(uuid);
     }
 }

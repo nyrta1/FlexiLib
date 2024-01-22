@@ -9,4 +9,6 @@ public interface AuthorService {
     List<Author> findAll();
     Author findByUUID(UUID uuid);
     UUID save(Author author);
+    Author update(UUID uuid, Author author);
+    int deleteByUUID(UUID uuid);
 }
