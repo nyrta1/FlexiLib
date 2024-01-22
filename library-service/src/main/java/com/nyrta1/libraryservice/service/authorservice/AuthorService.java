@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-@Service
 public interface AuthorService {
     List<Authors> findAll();
-    Authors findById(UUID uuid);
+    Authors findByUUID(UUID uuid);
     UUID save(Authors author);
 }
