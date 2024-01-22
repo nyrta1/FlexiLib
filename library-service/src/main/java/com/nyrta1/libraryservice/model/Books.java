@@ -1,6 +1,7 @@
 package com.nyrta1.libraryservice.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,12 +18,15 @@ import java.util.UUID;
 public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID bookID;
+    @Column(name="authorUUID", insertable = false, updatable = false, nullable = false)
+    private UUID bookUUID;
 
     @Column(nullable = false)
+    @Size(min = 3, max = 255)
     private String title;
 
     @Column(nullable = false)
+    @Size(min = 3, max = 255)
     private String ISBN;
 
     @Column(nullable = false)
