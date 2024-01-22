@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.util.UUID;
 
@@ -16,7 +14,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Authors {
+public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="authorUUID", insertable = false, updatable = false, nullable = false)
