@@ -9,4 +9,6 @@ public interface BookService {
     List<Book> findAll();
     Book findByUUID(UUID uuid);
     UUID save(Book book);
+    Book update(UUID uuid, Book book);
+    int deleteByUUID(UUID uuid);
 }

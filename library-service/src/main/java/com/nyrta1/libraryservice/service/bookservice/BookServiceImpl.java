@@ -4,6 +4,7 @@ import com.nyrta1.libraryservice.model.Author;
 import com.nyrta1.libraryservice.model.Book;
 import com.nyrta1.libraryservice.repository.AuthorRepository;
 import com.nyrta1.libraryservice.repository.BookRepository;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,24 @@ class BookServiceImpl implements BookService{
 
         Book savedBook = booksRepository.saveAndFlush(changedBook);
         return savedBook.getBookUUID();
+    }
+
+    @Override
+    public Book update(UUID uuid, Book updatedBook) {
+        Book existingBook = booksRepository.findByBookUUID(uuid).orElse(null);
+
+        if (existingBook != null) {
+            updatedBook.setBookUUID(existingBook.getBookUUID());
+            return booksRepository.saveAndFlush(updatedBook);
+        }
+
+        return null;
+    }
+
+
+    @Override
+    @Transactional
+    public int deleteByUUID(UUID uuid) {
+        return booksRepository.deleteByBookUUID(uuid);
     }
 }
