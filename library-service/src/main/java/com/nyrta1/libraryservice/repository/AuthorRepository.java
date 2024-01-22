@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface AuthorRepository
         extends JpaRepository<Author, UUID> {
     Optional<Author> findByAuthorUUID(UUID uuid);
+    int deleteByAuthorUUID(UUID uuid);
 }
