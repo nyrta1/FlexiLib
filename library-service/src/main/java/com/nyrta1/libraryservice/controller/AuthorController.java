@@ -39,7 +39,6 @@ public class AuthorController {
         return ResponseEntity.of(Optional.ofNullable(author));
     }
 
-
     @PostMapping
     public ResponseEntity<UUID> saveAuthor(@RequestBody @Valid Author author) {
         UUID authorUUID = authorService.save(author);
@@ -48,4 +47,20 @@ public class AuthorController {
                 .body(authorUUID);
     }
 
+    @PutMapping
+    public ResponseEntity<Author> updateAuthor(@RequestParam("uuid") UUID uuid, @RequestBody @Valid Author author) {
+        Author updatedAuthor = authorService.update(uuid, author);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(updatedAuthor);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteAuthorByUUID(@RequestParam("uuid") UUID uuid) {
+        int isSuccess = authorService.deleteByUUID(uuid);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(isSuccess);
+    }
 }

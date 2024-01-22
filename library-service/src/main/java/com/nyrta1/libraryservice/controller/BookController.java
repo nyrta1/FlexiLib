@@ -1,5 +1,6 @@
 package com.nyrta1.libraryservice.controller;
 
+import com.nyrta1.libraryservice.model.Author;
 import com.nyrta1.libraryservice.model.Book;
 import com.nyrta1.libraryservice.service.bookservice.BookService;
 import jakarta.validation.Valid;
@@ -47,5 +48,22 @@ public class BookController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(bookUUID);
+    }
+
+    @PutMapping
+    public ResponseEntity<Book> updateBook(@RequestParam("uuid") UUID uuid, @RequestBody @Valid Book book) {
+        Book updatedBook = bookService.update(uuid, book);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(updatedBook);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteBookByUUID(@RequestParam("uuid") UUID uuid) {
+        int isSuccess = bookService.deleteByUUID(uuid);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(isSuccess);
     }
 }
