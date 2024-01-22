@@ -15,11 +15,11 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/books")
 @Slf4j
-public class BooksController {
+public class BookController {
     private final BookService bookService;
 
     @Autowired
-    public BooksController(BookService bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 

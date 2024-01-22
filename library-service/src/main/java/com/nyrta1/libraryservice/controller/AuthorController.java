@@ -17,11 +17,11 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/api/authors")
 @Slf4j
-public class AuthorsController {
+public class AuthorController {
     private final AuthorService authorService;
 
     @Autowired
-    public AuthorsController(AuthorService authorService) {
+    public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
     }
 
