@@ -1,7 +1,7 @@
 package com.nyrta1.libraryservice.service.authorservice;
 
-import com.nyrta1.libraryservice.model.Authors;
-import com.nyrta1.libraryservice.repository.AuthorsRepository;
+import com.nyrta1.libraryservice.model.Author;
+import com.nyrta1.libraryservice.repository.AuthorRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,28 +12,28 @@ import java.util.UUID;
 @Service
 @Slf4j
 class AuthorServiceImpl implements AuthorService {
-    private final AuthorsRepository authorsRepository;
+    private final AuthorRepository authorsRepository;
 
     @Autowired
-    public AuthorServiceImpl(AuthorsRepository authorsRepository) {
+    public AuthorServiceImpl(AuthorRepository authorsRepository) {
         this.authorsRepository = authorsRepository;
     }
 
     @Override
-    public List<Authors> findAll() {
+    public List<Author> findAll() {
         return authorsRepository.findAll();
     }
 
     @Override
-    public Authors findByUUID(UUID uuid) {
+    public Author findByUUID(UUID uuid) {
         return authorsRepository
                 .findByAuthorUUID(uuid)
                 .orElse(null);
     }
 
     @Override
-    public UUID save(Authors author) {
-        Authors savedAuthor = authorsRepository.saveAndFlush(author);
+    public UUID save(Author author) {
+        Author savedAuthor = authorsRepository.saveAndFlush(author);
         return savedAuthor.getAuthorUUID();
     }
 }
