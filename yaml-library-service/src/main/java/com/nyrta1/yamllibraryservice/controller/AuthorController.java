@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/api/xml/authors")
+@RequestMapping("/api/yaml/authors")
 @Slf4j
 public class AuthorController {
     private final AuthorService authorService;

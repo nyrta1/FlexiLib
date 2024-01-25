@@ -42,7 +42,6 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<UUID> saveAuthor(@RequestBody @Valid Book book) {
-        log.info(book.toString());
         UUID bookUUID = bookService.save(book);
         return ResponseEntity
                 .status(HttpStatus.OK)

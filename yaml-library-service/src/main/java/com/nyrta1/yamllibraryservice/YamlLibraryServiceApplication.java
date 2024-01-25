@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class XmlLibraryServiceApplication {
+public class YamlLibraryServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(XmlLibraryServiceApplication.class, args);
+		SpringApplication.run(YamlLibraryServiceApplication.class, args);
 	}
 
 }
