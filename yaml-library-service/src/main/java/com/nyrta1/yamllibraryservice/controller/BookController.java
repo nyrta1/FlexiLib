@@ -1,10 +1,13 @@
-package com.nyrta1.xmllibraryservice.controller;
+package com.nyrta1.yamllibraryservice.controller;
 
-import com.nyrta1.xmllibraryservice.model.Book;
-import com.nyrta1.xmllibraryservice.service.bookservice.BookService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nyrta1.yamllibraryservice.model.Book;
+import com.nyrta1.yamllibraryservice.service.bookservice.BookService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,31 +21,48 @@ import java.util.UUID;
 public class BookController {
     private final BookService bookService;
 
+    @Qualifier("yamlObjectMapper")
+    private final ObjectMapper yamlObjectMapper;
+
     @Autowired
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, ObjectMapper yamlObjectMapper) {
         this.bookService = bookService;
+        this.yamlObjectMapper = yamlObjectMapper;
     }
 
     @GetMapping
     public ResponseEntity<?> getAllBooks() {
-        List<Book> books = bookService.findAll();
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(books);
+        try {
+            List<Book> books = bookService.findAll();
+            String yamlBooks = yamlObjectMapper.writeValueAsString(books);
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(yamlBooks);
+        } catch (JsonProcessingException e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(e.getMessage());
+        }
     }
 
     @GetMapping("/{uuid}")
     public ResponseEntity<?> getBookByUUID(@Valid @PathVariable("uuid") UUID uuid) {
-        Book book = bookService.findByUUID(uuid);
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(book);
+        try {
+            Book book = bookService.findByUUID(uuid);
+            String yamlBook = yamlObjectMapper.writeValueAsString(book);
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(yamlBook);
+        } catch (JsonProcessingException e) {
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(e.getMessage());
+        }
     }
 
 
     @PostMapping
     public ResponseEntity<UUID> saveAuthor(@RequestBody @Valid Book book) {
-        log.info(book.toString());
         UUID bookUUID = bookService.save(book);
         return ResponseEntity
                 .status(HttpStatus.OK)
