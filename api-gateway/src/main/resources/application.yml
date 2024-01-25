@@ -2,8 +2,6 @@ server:
   port: 8060
 
 spring:
-  config:
-    import: "optional:configserver:http://localhost:8088"
   application:
     name: api-gateway
   cloud:
