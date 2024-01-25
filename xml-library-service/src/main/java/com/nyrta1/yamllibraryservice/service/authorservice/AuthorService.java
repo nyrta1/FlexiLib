@@ -1,6 +1,6 @@
-package com.nyrta1.xmllibraryservice.service.authorservice;
+package com.nyrta1.yamllibraryservice.service.authorservice;
 
-import com.nyrta1.xmllibraryservice.model.Author;
+import com.nyrta1.yamllibraryservice.model.Author;
 
 import java.util.List;
 import java.util.UUID;

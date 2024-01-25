@@ -1,4 +1,4 @@
-package com.nyrta1.xmllibraryservice;
+package com.nyrta1.yamllibraryservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

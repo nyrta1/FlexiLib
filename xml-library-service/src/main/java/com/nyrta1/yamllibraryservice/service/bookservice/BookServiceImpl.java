@@ -1,9 +1,9 @@
-package com.nyrta1.xmllibraryservice.service.bookservice;
+package com.nyrta1.yamllibraryservice.service.bookservice;
 
-import com.nyrta1.xmllibraryservice.model.Author;
-import com.nyrta1.xmllibraryservice.model.Book;
-import com.nyrta1.xmllibraryservice.repository.AuthorRepository;
-import com.nyrta1.xmllibraryservice.repository.BookRepository;
+import com.nyrta1.yamllibraryservice.model.Author;
+import com.nyrta1.yamllibraryservice.model.Book;
+import com.nyrta1.yamllibraryservice.repository.AuthorRepository;
+import com.nyrta1.yamllibraryservice.repository.BookRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

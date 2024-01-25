@@ -1,6 +1,6 @@
-package com.nyrta1.xmllibraryservice.repository;
+package com.nyrta1.yamllibraryservice.repository;
 
-import com.nyrta1.xmllibraryservice.model.Author;
+import com.nyrta1.yamllibraryservice.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

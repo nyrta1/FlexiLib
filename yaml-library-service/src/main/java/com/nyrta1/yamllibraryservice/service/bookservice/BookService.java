@@ -1,6 +1,6 @@
-package com.nyrta1.xmllibraryservice.service.bookservice;
+package com.nyrta1.yamllibraryservice.service.bookservice;
 
-import com.nyrta1.xmllibraryservice.model.Book;
+import com.nyrta1.yamllibraryservice.model.Book;
 
 import java.util.List;
 import java.util.UUID;

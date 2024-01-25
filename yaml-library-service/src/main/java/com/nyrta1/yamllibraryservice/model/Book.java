@@ -1,4 +1,4 @@
-package com.nyrta1.xmllibraryservice.model;
+package com.nyrta1.yamllibraryservice.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;

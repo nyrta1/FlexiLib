@@ -1,4 +1,4 @@
-package com.nyrta1.xmllibraryservice.config;
+package com.nyrta1.yamllibraryservice.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

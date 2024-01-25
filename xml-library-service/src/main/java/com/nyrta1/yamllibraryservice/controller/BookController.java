@@ -1,7 +1,7 @@
-package com.nyrta1.xmllibraryservice.controller;
+package com.nyrta1.yamllibraryservice.controller;
 
-import com.nyrta1.xmllibraryservice.model.Book;
-import com.nyrta1.xmllibraryservice.service.bookservice.BookService;
+import com.nyrta1.yamllibraryservice.model.Book;
+import com.nyrta1.yamllibraryservice.service.bookservice.BookService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
