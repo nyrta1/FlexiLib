@@ -22,4 +22,8 @@ You can access the services at the provided host and port combinations.
 - Config server: `http://localhost:8088`
 - Service Registry: `http://localhost:8761`
 
+## README.md Files
+
+If you want to find out a lot of information about services, open the services folder and read README.md
+
 Feel free to explore and integrate these services into your applications.
